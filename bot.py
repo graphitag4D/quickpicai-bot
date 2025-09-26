@@ -7,18 +7,13 @@ from alibabacloud_wanxiang20230601.client import Client
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_wanxiang20230601 import models as wanxiang_models
 
-# === Настройки ===
-BOT_TOKEN = "8483804350:AAENdRj3dslq8ihpo-v40W8RQaeXOxshpm8"
-ALIBABA_KEY = os.getenv("LTAI5tJxHXdiVL5SURv4Dt7b")
-ALIBABA_SECRET = os.getenv("CAWMfE8KMfX8CnnALzmII89Hdxtend")
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 def get_wanxiang_client():
     config = open_api_models.Config(
-        access_key_id=LTAI5tJxHXdiVL5SURv4Dt7b,
-        access_key_secret=CAWMfE8KMfX8CnnALzmII89Hdxtend,
+       
         region_id="ap-southeast-1"  # Сингапур — лучше доступ из РФ
     )
     return Client(config)
@@ -59,3 +54,4 @@ async def handle_photo(message: types.Message):
 # === Запуск ===
 if __name__ == "__main__":
     asyncio.run(dp.start_polling(bot))
+
