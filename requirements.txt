@@ -1,0 +1,3 @@
+aiogram==3.13.0
+alibabacloud-wanxiang20230601==1.0.1
+python-dotenv==1.0.0
