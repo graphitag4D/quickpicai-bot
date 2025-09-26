@@ -9,16 +9,16 @@ from alibabacloud_wanxiang20230601 import models as wanxiang_models
 
 # === Настройки ===
 BOT_TOKEN = "8483804350:AAENdRj3dslq8ihpo-v40W8RQaeXOxshpm8"
-ALIBABA_KEY = os.getenv("ALIBABA_KEY")
-ALIBABA_SECRET = os.getenv("ALIBABA_SECRET")
+ALIBABA_KEY = os.getenv("LTAI5tJxHXdiVL5SURv4Dt7b")
+ALIBABA_SECRET = os.getenv("CAWMfE8KMfX8CnnALzmII89Hdxtend")
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 def get_wanxiang_client():
     config = open_api_models.Config(
-        access_key_id=ALIBABA_KEY,
-        access_key_secret=ALIBABA_SECRET,
+        access_key_id=LTAI5tJxHXdiVL5SURv4Dt7b,
+        access_key_secret=CAWMfE8KMfX8CnnALzmII89Hdxtend,
         region_id="ap-southeast-1"  # Сингапур — лучше доступ из РФ
     )
     return Client(config)
