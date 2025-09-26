@@ -6,15 +6,25 @@ from aiogram.filters import Command
 from alibabacloud_wanxiang20230601.client import Client
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_wanxiang20230601 import models as wanxiang_models
+from dotenv import load_dotenv
 
+# Загружаем переменные окружения
+load_dotenv()
+
+# Настройки
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ALIBABA_KEY = os.getenv("ALIBABA_KEY")
+ALIBABA_SECRET = os.getenv("ALIBABA_SECRET")
+ALIBABA_REGION = os.getenv("ALIBABA_REGION", "ap-southeast-1")  # Сингапур — лучше всего работает из РФ
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 def get_wanxiang_client():
     config = open_api_models.Config(
-       
-        region_id="ap-southeast-1"  # Сингапур — лучше доступ из РФ
+        access_key_id=ALIBABA_KEY,
+        access_key_secret=ALIBABA_SECRET,
+        region_id=ALIBABA_REGION
     )
     return Client(config)
 
@@ -54,4 +64,3 @@ async def handle_photo(message: types.Message):
 # === Запуск ===
 if __name__ == "__main__":
     asyncio.run(dp.start_polling(bot))
-
